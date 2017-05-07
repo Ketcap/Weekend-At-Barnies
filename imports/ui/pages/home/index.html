@@ -1,0 +1,17 @@
+<template name="App_home">
+  {{#if currentUser}}
+  <main>
+  {{> App_now_playing}}
+  </main>
+  {{else}}
+
+  <div class="row valign-wrapper" style="height:calc(100vh - 64px); margin:0;">
+    <div class="container valign">
+      <div class="col s12 center-align">
+        <a id="loginSpotify" href="#!" class="btn waves-effect waves light" style="background-color:#84bd00">Login with Spotify</a>
+      </div>
+    </div>
+  </div>
+
+  {{/if}}
+</template>

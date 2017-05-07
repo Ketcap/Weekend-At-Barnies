@@ -1,0 +1,85 @@
+<template name="App_now_playing">
+  {{#if nowplaying}}
+  <div class="row">
+    <div class="col s12">
+
+      <div class="row container" style="margin-top:.5rem">
+
+        <div class="col s12">
+          <h4>Now_Playing
+            <a href="#" data-activates="slide-out" class="button-collapse right hide-on-large-only"><i class="material-icons">menu</i></a>
+          </h4>
+          <div class="card">
+            <div class="card-image" style="padding:1em">
+              <img src="{{album_image}}">
+              <span class="card-title col s12" style="background-color: rgba(0,0,0,.25);">{{song_name}}</span>
+              <a class="refresh btn-floating btn-large halfway-fab waves-effect waves-light red scale-transition"><i class="material-icons">refresh</i></a>
+            </div>
+            <div class="card-content">
+              <p>{{song_artist nowplaying.data.item.artists}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 center-align">
+          <a class="btn-floating btn waves-effect waves-light red prev_song"><i class="material-icons">skip_previous</i></a>
+          <a class="btn-floating btn-large waves-effect waves-light red pause"><i class="material-icons">pause</i></a>
+          <a class="btn-floating btn-large waves-effect waves-light red resume"><i class="material-icons">play_arrow</i></a>
+          <a class="btn-floating btn waves-effect waves-light red next_song"><i class="material-icons">skip_next</i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="slide-out" class="side-nav fixed right-aligned row">
+      <i class="material-icons hide-on-large-only close">close</i>
+      <a href="#" class="black-text valign-wrapper">
+        <img src={{profilePicture}} alt="" height="64px" class="circle right">
+
+        &nbsp; Welcome to Remote Control For Spotify
+      </a>
+      <form id="search" class="row valign-wrapper" style="padding-top:3rem; padding-right:.5rem">
+        <div class="input-field col s8">
+          <i class="material-icons prefix" style="margin-top:0.5rem">search</i>
+          <input id="search" type="text" class="validate">
+          <label for="search">Search</label>
+        </div>
+        <button class="btn waves-effect waves-light col s3" type="submit" name="action">Search</button>
+      </form>
+      {{#if songs}}
+       <div class="collection">
+        {{#each songs}}
+           <a href="#!" class="collection-item play_song"><i class="material-icons left">play_arrow</i>{{name}}
+             <p style="margin-bottom:0;">{{song_artist artists}}
+            </p>
+          </a>
+        {{/each}}
+      </div>
+      {{/if}}
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+
+    </div>
+  </div>
+
+  <script>
+  $('.button-collapse').sideNav({
+      menuWidth: 375, // Default is 300
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+  </script>
+  {{else}}
+
+    {{> loading}}
+
+  {{/if}}
+
+</template>

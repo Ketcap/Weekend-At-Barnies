@@ -1,0 +1,16 @@
+<template name="App_body">
+  {{#if currentUser}}
+  <!-- <header>
+    <nav class="white z-depth-0 container">
+      <div class="nav-wrapper">
+        <a href="#" class="black-text">
+          &nbsp; Welcome to Remote Control For Spotify
+        </a>
+        <img src={{profilePicture}} alt="" height="64px" class="circle right">
+
+        </div>
+      </nav>
+    </header> -->
+    {{/if}}
+    {{> Template.dynamic template=main}}
+  </template>
